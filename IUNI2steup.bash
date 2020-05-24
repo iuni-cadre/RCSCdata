@@ -27,8 +27,14 @@ hdfs dfs -copyToLocal <hdfs_input_file_path> <output_path>
 
 jupyter serverextension enable --py jupyterlab
 jupyter notebook --no-browser --port=8000 --ip=149.165.230.163 ## With the ip option, it is only accessible to other iuni nodes
-## if you log in with red desktop or other karst/carbonate notes
+##### open in iuni1 browser #####
+http://149.165.230.163:8001/?token=XXXXXXXXX
+
+##### if you log in with red desktop or other karst/carbonate notes
 ssh -t -t yan30@iuni2.carbonate.uits.iu.edu -L 8001:localhost:8001
 
-spark.sparkContext.uiWebUrl
+##### add following in your notebook to enable case senitivity in parsing
 sqlContext.sql("set spark.sql.caseSensitive=true") 
+
+##### next output will give you spark UI for tracking your jobs, only only accessible to other iuni nodes
+spark.sparkContext.uiWebUrl
