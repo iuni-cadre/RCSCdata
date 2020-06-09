@@ -1,5 +1,5 @@
 ssh iuni2.carbonate.uits.iu.edu
-cd /N/slate/yan30/COVID
+cd /N/project/rcsc/shared_space
 module swap python/3.6.8
 source activate tf-prob
 
