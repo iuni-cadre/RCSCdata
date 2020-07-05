@@ -5,6 +5,10 @@ source activate tf-prob
 
 export HADOOP_USER_NAME=hdfs
 export PATH=~/.local/bin:$PATH
+export JAVA_HOME=/usr/java/jdk1.8.0_181-cloudera/
+export HADOOP_HOME=/opt/cloudera/parcels/CDH/lib/hadoop
+export HADOOP_CONF_DIR=/opt/cloudera/parcels/CDH-6.3.1-1.cdh6.3.1.p0.1470567/lib/spark/conf/yarn-conf
+export SPARK_HOME=/opt/cloudera/parcels/CDH-6.3.1-1.cdh6.3.1.p0.1470567/lib/spark
 
 ###### now you should be able to run the command line ######
 pyspark
