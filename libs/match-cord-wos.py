@@ -300,7 +300,7 @@ if __name__ == "__main__":
     paper_count = 0
     identified_count = 0
 
-    # Read the chunks of code
+    # Read the chunks of data 
     for papers in pd.read_csv(PAPER_FILE, sep="\t", chunksize=1000):
 
         # Convert pandas data frame into list
