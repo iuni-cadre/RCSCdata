@@ -42,3 +42,24 @@ hdfs dfs -mkdir /data1
 hdfs dfs -copyFromLocal /wos_17_18/ /data1/WoSraw/
 hdfs dfs -ls /
 hdfs dfs -copyToLocal <hdfs_input_file_path> <output_path>
+
+##############elasticsearch testing##########################
+GET /wos/_search/
+{
+  "query": {
+    "match": {
+      "doc.pub_info._pubyear": "1985"
+    }
+  }
+}
+GET /wos_covid/_search/
+{
+  "query": {
+    "match": {
+      "pub_info._pubyear": 2020
+    }
+  }
+}
+
+
+
