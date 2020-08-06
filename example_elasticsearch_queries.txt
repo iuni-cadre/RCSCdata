@@ -1,0 +1,45 @@
+
+#Count records in index
+curl  iuni2.carbonate.uits.iu.edu:9200/wos/_count?pretty -u username: password --insecure
+
+
+#Get all fields for one publication based on WoS ID
+curl -X GET "iuni2.carbonate.uits.iu.edu:9200/wos/_search?pretty" -u username: password --insecure -H 'Content-Type: application/json' -d'
+{
+    "query": {
+        "ids" : {
+            "values" : ["WOS:A1985AUK0600019"]
+        }
+    }
+}
+'
+
+#Get all fields for one publication based on title
+curl -X GET "iuni2.carbonate.uits.iu.edu:9200/wos/_search?pretty" -u username: password --insecure -H 'Content-Type: application/json' -d'
+{
+    "query":{
+      "bool":{
+      "must": [
+      { "match": {"doc.titles.title._VALUE": "SERUM FERRITIN IN TYPE-I DIABETES"}},
+      ]
+    }
+  }
+}
+'
+
+#Get all fields in index
+curl -X GET "iuni2.carbonate.uits.iu.edu:9200/wos/_mapping?pretty" -u <username>:<password> --insecure 
+
+
+#Get ID and referenced ID's for a given year
+curl -X GET "iuni2.carbonate.uits.iu.edu:9200/wos/_search?pretty" -u username: password --insecure -H 'Content-Type: application/json' -d'
+{
+ "_source": ["doc.UID", "doc.reference.uid"],
+    			   "query": {
+          				"match": {
+            				"doc.pub_info._pubyear": 1900      
+        }
+      }
+    }
+'    
+    
