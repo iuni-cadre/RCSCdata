@@ -44,22 +44,30 @@ hdfs dfs -ls /
 hdfs dfs -copyToLocal <hdfs_input_file_path> <output_path>
 
 ##############elasticsearch testing##########################
+GET /wos_covid/_search/
+
 GET /wos/_search/
 {
   "query": {
     "match": {
-      "doc.pub_info._pubyear": "1985"
+      "doc.titles.title._VALUE": "nature"
     }
   }
 }
-GET /wos_covid/_search/
+
+GET /wos/_search/
 {
   "query": {
-    "match": {
-      "pub_info._pubyear": 2020
+    "bool": {
+      "must": [
+        {"match": {
+        "doc.pub_info._pubyear": "2002"
+        }},
+        {"match": {
+        "doc.titles.title._VALUE": "nature"
+        }}
+      ]  
     }
   }
 }
-
-
 
