@@ -71,3 +71,8 @@ GET /wos/_search/
   }
 }
 
+GET /wos_covid/_analyze/
+{
+  "tokenizer": "uax_url_email",//"field": "abstract_text.p",
+  "text": "test tokenizers@analyze.org"
+}
