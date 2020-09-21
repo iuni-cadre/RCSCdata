@@ -44,8 +44,6 @@ hdfs dfs -ls /
 hdfs dfs -copyToLocal <hdfs_input_file_path> <output_path>
 
 ##############elasticsearch testing##########################
-GET /wos_covid/_search/
-
 GET /wos/_search/
 {
   "query": {
@@ -75,4 +73,14 @@ GET /wos_covid/_analyze/
 {
   "tokenizer": "uax_url_email",//"field": "abstract_text.p",
   "text": "test tokenizers@analyze.org"
+}
+
+GET /wos_covid/_search/
+{
+  "size": 0,
+  "aggs" : {
+        "count_identifier" : {
+            "terms": { "field": "identifier._type.keyword" }
+        }
+    }
 }
