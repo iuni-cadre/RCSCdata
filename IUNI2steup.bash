@@ -36,6 +36,10 @@ sqlContext.sql("set spark.sql.caseSensitive=true")
 ##### next output will give you spark UI for tracking your jobs, only only accessible to other iuni nodes
 spark.sparkContext.uiWebUrl
 
+##### if your spark application is obnormally killed, use following command to control it under yarn
+yarn application -list
+yarn application -kill application_id
+
 ##### for interacting with the native HDFS on the cluster
 hadoop fs -rm -R URI
 hdfs dfs -mkdir /data1
