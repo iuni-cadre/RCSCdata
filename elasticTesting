@@ -1,0 +1,41 @@
+##############elasticsearch testing##########################
+GET /wos/_search/
+{
+  "query": {
+    "match": {
+      "doc.titles.title._VALUE": "nature"
+    }
+  }
+}
+
+GET /wos/_search/
+{
+  "query": {
+    "bool": {
+      "must": [
+        {"match": {
+        "doc.pub_info._pubyear": "2002"
+        }},
+        {"match": {
+        "doc.titles.title._VALUE": "nature"
+        }}
+      ]  
+    }
+  }
+}
+
+GET /wos_covid/_analyze/
+{
+  "tokenizer": "uax_url_email",//"field": "abstract_text.p",
+  "text": "test tokenizers@analyze.org"
+}
+
+GET /wos_covid/_search/
+{
+  "size": 0,
+  "aggs" : {
+        "count_identifier" : {
+            "terms": { "field": "identifier._type.keyword" }
+        }
+    }
+}
